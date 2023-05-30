@@ -17,10 +17,14 @@ class Turno
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $fecha = null;
 
-    #[ORM\Column(nullable: true)]
+
+
+
+
+    #[ORM\ManyToOne(inversedBy: 'turnos')]
     private ?Oficina $oficina = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\ManyToOne(inversedBy: 'turnos')]
     private ?Persona $persona = null;
 
     public function getId(): ?int
@@ -40,7 +44,10 @@ class Turno
         return $this;
     }
 
-    public function getOficina(): ?int
+
+
+
+    public function getOficina(): ?Oficina
     {
         return $this->oficina;
     }
@@ -52,7 +59,7 @@ class Turno
         return $this;
     }
 
-    public function getPersona(): ?int
+    public function getPersona(): ?Persona
     {
         return $this->persona;
     }
