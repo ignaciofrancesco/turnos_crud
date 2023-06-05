@@ -21,6 +21,12 @@ class Persona
     #[ORM\OneToMany(mappedBy: 'persona', targetEntity: Turno::class)]
     private Collection $turnos;
 
+    #[ORM\Column]
+    private ?int $dni = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $apellido = null;
+
     public function __construct()
     {
         $this->turnos = new ArrayCollection();
@@ -72,4 +78,33 @@ class Persona
 
         return $this;
     }
+    
+     public function __toString()
+    {
+        return this->getNombre();
+    }
+
+     public function getDni(): ?int
+     {
+         return $this->dni;
+     }
+
+     public function setDni(int $dni): self
+     {
+         $this->dni = $dni;
+
+         return $this;
+     }
+
+     public function getApellido(): ?string
+     {
+         return $this->apellido;
+     }
+
+     public function setApellido(string $apellido): self
+     {
+         $this->apellido = $apellido;
+
+         return $this;
+     } 
 }

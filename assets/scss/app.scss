@@ -1,0 +1,10 @@
+@import "~bootstrap/scss/functions";
+
+// Customizacion de Bootstrap
+$primary: #373;
+
+@import '~bootstrap/scss/bootstrap';
+
+@import '../styles/app.css';
+
+/* Colocar aca todas las definiciones CSS */
